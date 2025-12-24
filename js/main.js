@@ -1,5 +1,5 @@
 /* ======================================================
-   SCORM 1.2 helper
+   SCORM 1.2 helper (pipwerks)
 ====================================================== */
 const SCORM = {
     connected: false,
@@ -115,7 +115,6 @@ function wireMobileMenu() {
         document.querySelectorAll(".nav-btn").forEach(btn => {
             btn.addEventListener("click", () => {
                 menuLinks.classList.remove("open");
-                menuBtn.setAttribute("aria-expanded", "false");
             });
         });
 
@@ -129,7 +128,7 @@ function wireMobileMenu() {
 
 function renderCards() {
     const row = document.getElementById("cardsRow");
-    if(!row) return;
+    if (!row) return;
     row.innerHTML = "";
     data.generators.forEach(g => {
         const col = document.createElement("div");
@@ -150,22 +149,24 @@ function renderCards() {
 }
 
 function openDetails(g) {
+    const detailsBox = document.getElementById("detailsBox");
+    if (!detailsBox) return;
     document.getElementById("detailsImg").src = `img/${g.img}`;
     document.getElementById("detailsTitle").textContent = g.title;
     document.getElementById("detailsContent").textContent = g.content;
-    document.getElementById("detailsBox").classList.remove("d-none");
+    detailsBox.classList.remove("d-none");
 }
 
 function wireDetailsClose() {
     const closeBtn = document.getElementById("closeDetails");
-    if(closeBtn) {
+    if (closeBtn) {
         closeBtn.onclick = () => document.getElementById("detailsBox").classList.add("d-none");
     }
 }
 
 function renderQuiz() {
     const container = document.getElementById("quizContainer");
-    if(!container) return;
+    if (!container) return;
     container.innerHTML = "";
     quizData.forEach((q, i) => {
         const card = document.createElement("div");
@@ -185,7 +186,7 @@ function renderQuiz() {
     });
 
     const form = document.getElementById("quizForm");
-    if(form) {
+    if (form) {
         form.onsubmit = e => {
             e.preventDefault();
             gradeQuiz();
@@ -202,7 +203,9 @@ function gradeQuiz() {
         answered++;
         if (q.answers.find(a => a.correct)?.id === chosen.value) correct++;
     });
-    document.getElementById("quizResult").textContent = `ענית על ${answered}/${quizData.length}. נכונות: ${correct}.`;
+    const res = document.getElementById("quizResult");
+    if (res) res.textContent = `ענית על ${answered}/${quizData.length}. נכונות: ${correct}.`;
+    
     const scorePercent = (correct / quizData.length) * 100;
     SCORM.report(scorePercent);
     if (answered === quizData.length) { SCORM.finish(); }
@@ -211,8 +214,14 @@ function gradeQuiz() {
 function wireHeaderNav() {
     document.querySelectorAll("[data-section]").forEach(btn => {
         btn.onclick = () => {
-            const target = document.getElementById(btn.dataset.section);
-            if(target) target.scrollIntoView({ behavior: "smooth" });
+            const sectionName = btn.dataset.section;
+            // התאמה בין ה-data-section ל-IDs ב-HTML שלך
+            let targetId = sectionName;
+            if (sectionName === "tools") targetId = "cardsRow"; // דוגמה להתאמה
+            if (sectionName === "quiz") targetId = "quizForm";
+            
+            const target = document.getElementById(targetId);
+            if (target) target.scrollIntoView({ behavior: "smooth" });
         };
     });
 }
@@ -232,7 +241,7 @@ function wireSearch() {
 }
 
 /* ======================================================
-   INIT (הפעלה)
+   INIT
 ====================================================== */
 document.addEventListener("DOMContentLoaded", () => {
     SCORM.init();
