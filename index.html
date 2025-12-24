@@ -1,0 +1,160 @@
+<script src="scorm/pipwerks-scorm-api-wrapper.js"></script>
+<script src="js/main.js" defer></script>
+
+<!doctype html>
+ <html lang="he" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>תכנות 3 - JavaScript</title>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+</body>
+
+</html> 
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="brand">בן גולן</div>
+
+    <!-- כפתור המבורגר (מופיע רק במובייל) -->
+    <button class="nav-toggle" id="navToggle" aria-label="פתיחת תפריט" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- התפריט -->
+    <ul class="nav-links" id="navLinks">
+      <li><button class="nav-btn" data-section="tools">כלים</button></li>
+      <li><button class="nav-btn" data-section="quiz">שאלון</button></li>
+      <li><button class="nav-btn" data-section="about">אודות</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER 101</title>
+
+  <!-- Bootstrap RTL -->
+<link rel="stylesheet" href="./css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="cyber-bg">
+
+<!-- HERO -->
+<section class="hero cyber-bg">
+  <div class="container hero-container">
+    <div class="text-center text-white hero-content">
+      <h1 class="hero-title m-0">CYBER 101</h1>
+
+      <p class="hero-subtitle mt-3 mb-4">
+היכרות עם איומי סייבר נפוצים ועם הכלים המרכזיים להתמודדות ולהגנה בעולם הדיגיטלי.
+      </p>
+
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-info btn-lg px-4" data-section="tools">כלים</button>
+        <button class="btn btn-outline-info btn-lg px-4" data-section="quiz">שאלון</button>
+        <button class="btn btn-outline-light btn-lg px-4" data-section="about">אודות</button>
+      </div>
+    </div>
+  </div>
+</section>
+   
+<!-- חיפוש -->
+<form id="searchForm" class="d-flex align-items-center gap-2" role="search">
+  <input
+    id="searchInput"
+    class="form-control form-control-sm"
+    type="search"
+    placeholder="חיפוש לפי מילה…"
+    aria-label="Search"
+    style="max-width: 220px;"
+  />
+
+  <button
+    type="submit"
+    class="btn btn-outline-light btn-sm search-btn"
+    aria-label="חיפוש">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="16" height="16"
+         viewBox="0 0 16 16"
+         fill="currentColor"
+         aria-hidden="true">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.868-3.834zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+    </svg>
+  </button>
+</form>
+
+
+</form>
+
+
+  <!-- MAIN -->
+  <main class="container pb-5">
+
+    <!-- “ריבוע גדול” (פרטי הכלי שנבחר) -->
+<section id="detailsBox" class="details-box d-none">
+  <div class="details-inner">
+    <button id="closeDetails" class="btn btn-sm btn-outline-light">סגור ✕</button>
+
+    <div class="d-flex align-items-start gap-3 mt-3 flex-nowrap details-row">
+      <img id="detailsImg" class="details-img" alt="" />
+
+      <div class="details-content">
+        <h2 id="detailsTitle" class="details-title mb-2"></h2>
+        <p id="detailsContent" class="details-text mb-3"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- כרטיסים -->
+    <section id="tools" class="mt-4">
+      <h3 class="section-title mb-3">כלים</h3>
+
+    <div id="cardsRow" class="row g-3 justify-content-center">
+    <!-- cards inserted by JS -->
+    </div>
+
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="mt-5">
+      <h3 class="section-title mb-3">שאלון</h3>
+
+      <form id="quizForm" class="quiz-box">
+        <div id="quizContainer"></div>
+
+        <div class="d-flex align-items-center gap-2 mt-3 flex-wrap">
+          <button type="submit" class="btn btn-success">בדוק תשובות</button>
+          <div id="quizResult" class="text-white-50"></div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mt-5">
+      <h3 class="section-title mb-2">אודות</h3>
+      <p class="text-white-50 mb-0">אתר רספונסיבי עם Bootstrap + JavaScript (כרטיסים, חלון מידע ושאלון).</p>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="scorm/pipwerks-scorm-api-wrapper.js"></script>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
